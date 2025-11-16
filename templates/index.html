@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Quality Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f8f8;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 20px;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            grid-column: span 2;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            grid-column: span 2;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007BFF;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Wine Quality Prediction</h2>
+    <form action="/predict" method="post">
+        <label>Fixed Acidity: <input type="text" name="fixed_acidity"></label>
+        <label>Volatile Acidity: <input type="text" name="volatile_acidity"></label>
+        <label>Citric Acid: <input type="text" name="citric_acid"></label>
+        <label>Residual Sugar: <input type="text" name="residual_sugar"></label>
+        <label>Chlorides: <input type="text" name="chlorides"></label>
+        <label>Free Sulfur Dioxide: <input type="text" name="free_sulfur_dioxide"></label>
+        <label>Total Sulfur Dioxide: <input type="text" name="total_sulfur_dioxide"></label>
+        <label>Density: <input type="text" name="density"></label>
+        <label>pH: <input type="text" name="pH"></label>
+        <label>Sulphates: <input type="text" name="sulphates"></label>
+        <label>Alcohol: <input type="text" name="alcohol"></label>
+        <input type="submit" value="Predict">
+
+        {% if prediction_text %}
+            <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </form>
+</body>
+</html>
